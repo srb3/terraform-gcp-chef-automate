@@ -21,17 +21,17 @@ terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|----------|
-|gcp_project|A list of ip addresses where the chef automate will be installed|list|[]|no|
-|gcp_region|The number of instances being created|number|1|no|
-|gcp_zone|The ssh user name used to access the ip addresses provided|string||yes|
-|network_routing_mode|The ssh user password used to access the ip addresses (either ssh_user_pass or ssh_user_private_key needs to be set)|string|""|no|
-|subnet_cidr|The ssh user key used to access the ip addresses (either ssh_user_pass or ssh_user_private_key needs to be set)|string|""|no|
-|tags|The install channel to use for the chef automate package|string|current|no|
-|user_name|The version of chef automate to install|string|latest|no|
-|user_pass|Any extra config that needs to be passed to the automate server can be placed in this string|string|""|no|
-|create_user|Shall we accept the chef product license|boolean|true|no|
-|user_public_key|The token used to access the data collector end point|string|""|no|
-|user_private_key|Sets the automate admin password|string|""|no|
+|gcp_project|the name of the project to create resources|string||yes|
+|gcp_region|The name of the GCP region to use|string||yes|
+|gcp_zone|The name of the gcp zone to use|string||yes|
+|network_routing_mode|The routing mode to use for the network|string|GLOBAL|no|
+|subnet_cidr|The CIDR of the subnet that will be created|string|10.10.10.0/24|no|
+|tags|A map of tags to pass through to the underlying resources - see terraform.tfvars.example for details|map|{}|no|
+|user_name|The ssh user name, used to create users on the target servers, if the create_user variable is set to true|string|latest|no|
+|user_pass|The password to set for the ssh user, not need if using public key|string|""|no|
+|create_user|Should the user be created|boolean|true|no|
+|user_public_key|Needed if not useing password, this is the path to an ssh public key. the key content will be injected into the authoried keys file for the user specified in user_name|string|""|no|
+|user_private_key|The path to the private key that matches the public key if one has been specifed. used by terraform modules to access the instance|string|""|no|
 |populate_hosts|Set an entry in /etc/hosts for equivilent to `echo \"$(hostname -I) $(hostname)\">> /etc/hosts`|bool|false|no|
 |tmp_path|The location of the temp path to use for downloading installers and executing scripts|string|/var/tmp/server_bootstrap|no|
 |set_hostname|Should we set the hostname to the chef autoamte instance|bool|true|no|

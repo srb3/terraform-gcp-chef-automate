@@ -47,7 +47,7 @@ variable "user_pass" {
 variable "create_user" {
   description = "Should the user be created"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "user_public_key" {
