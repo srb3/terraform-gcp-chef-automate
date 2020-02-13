@@ -1,8 +1,14 @@
 # Overview
 This terraform will create:
- network and subnet
- firewall rules for 80,443 from any source for the network
- a chef automate instance in gcp
+ * network and subnet
+ * firewall rules for 80,443 from any source for the network
+ * a chef automate instance in gcp
+
+### Prerequisites
+before you run terraform, the GOOGLE_CLOUD_KEYFILE_JSON environment vairable needs to be set
+```
+export GOOGLE_CLOUD_KEYFILE_JSON=</path/to/gcp/creds.json>
+```
 
 ### Supported platform families:
  * Debian
@@ -12,6 +18,7 @@ This terraform will create:
 ## Usage
 
 ```
+export GOOGLE_CLOUD_KEYFILE_JSON=</path/to/gcp/creds.json>
 terraform init
 terraform plan
 terraform apply
