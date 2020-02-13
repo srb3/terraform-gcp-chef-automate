@@ -1,0 +1,28 @@
+gcp_project = ""
+gcp_region = ""
+gcp_zone = ""
+
+# set these two tags at least and add others if needed
+tags = {
+  "contact" = ""
+  "prefix" = ""
+}
+
+user_name = ""        # a user name for ssh access
+create_user = true    # if true creates the user_name above and sets up the ssh access
+user_private_key = "" # path to a ssh private key
+user_public_key = ""  # path to an shh public key that matches the private key
+
+
+chef_automate_license = ""              # the chef automate license string
+chef_automate_data_collector_token = "" # you can enter a token string here or leave blank to generate a random token
+chef_automate_admin_password = ""       # the password used to log into the chef autoamte UI as the admin user. Leave blank to use a randomly generated password
+
+# a list of hashes describing the profiles to enable
+chef_automate_enabled_profiles = [      
+  {
+    "name" = "cis-example-benchmark-level2",
+    "version" = "latest",
+    "owner" = "admin"
+  }
+]
